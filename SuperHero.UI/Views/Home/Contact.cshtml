@@ -1,0 +1,81 @@
+﻿@model SuperHero.UI.Models.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+}
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title text-center">Contact <strong>Us</strong></h2>
+                <div id="gmap" class="contact-map google-maps">
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8Zb9EzlQrki77-KPSk-pSlj3Cd_KTEdo&amp;callback=initMap"></script>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.023561985009!2d-94.61137504846033!3d38.96912997945933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0e925e366ed0f%3A0x73aec4617abd2f03!2sCentriq+Training!5e0!3m2!1sen!2sus!4v1468708493385" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-11">
+                <div class="contact-form">
+                    <h2 class="title text-center">Get In Touch</h2>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    @*                    <form id="main-contact-form" class="contact-form row" name="contact-form" method="get" action="#" onsubmit="validateForm()">*@
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group col-md-6">
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Name" })
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(x => x.Email)
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", @placeholder = "Subject" })
+                            @Html.ValidationMessageFor(x => x.Subject)
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            @Html.TextAreaFor(x => x.Message, new { @class = "form-control", @placeholder = "Message" })
+                            @Html.ValidationMessageFor(x => x.Message)
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="submit" name="submit" class="btn btn-primary pull-right" value="Submit">
+
+                        </div>
+                    }
+                    @*</form>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!--/#contact-page-->
+@section scripts{
+    <script src="~/Content/Scripts/formvalidation.js"></script>
+    <script>
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 17,
+                scrollwheel: false,
+                center: new google.maps.LatLng(18.013764, -76.801992)
+            };
+
+            var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+
+
+            var marker = new google.maps.Marker({
+                position: map.getCenter(),
+                icon: '../Content/img/map-marker.png',
+                map: map
+            });
+
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+}
