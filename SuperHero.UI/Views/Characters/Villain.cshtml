@@ -34,7 +34,7 @@
             @Html.DisplayFor(modelItem => item.Alias)
         </td>
         <td>
-            <img src="@Url.Content("~/Content/Images/Characters/" + item.CharacterImage)" height="75" />
+            <img src="@Url.Content("~/Content/Images/Characters/" + item.CharacterImage)" />
         </td>
         @if (User.IsInRole("Admin"))
         {<td>
