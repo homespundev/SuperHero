@@ -58,7 +58,17 @@ namespace SuperHero.UI.Controllers
             }
 
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "Name", courseSignUp.CourseID);
-            return View(courseSignUp);
+            if (User.IsInRole("Citizen") || User.IsInRole("Hero"))
+            {
+                var userCourses = db.CourseSignUps.Where(x => x.Email == User.Identity.Name);
+                return View(courseSignUp);
+            }
+            else
+            {
+
+
+                return View(courseSignUp);
+            }
         }
 
         // GET: CourseSignUps/Edit/5

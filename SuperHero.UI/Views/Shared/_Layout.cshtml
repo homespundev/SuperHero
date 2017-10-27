@@ -78,7 +78,8 @@
                                             <li>@Html.ActionLink("Characters", "Index", "Characters")</li>
                                         }
                                         <li>@Html.ActionLink("Courses", "Index", "Course")</li>
-                                        <li>@Html.ActionLink("Sign-Up", "SignUp", "CourseSignUps")</li>
+                                        @if(User.IsInRole("Admin")||User.IsInRole("Hero")|| User.IsInRole("Citizen")) { 
+                                        <li>@Html.ActionLink("Sign-Up", "SignUp", "CourseSignUps")</li>}
                                         <li>@Html.ActionLink("Villians", "Villain", "Characters")</li>
                                         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                                         {
