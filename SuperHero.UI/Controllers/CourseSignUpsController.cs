@@ -60,7 +60,7 @@ namespace SuperHero.UI.Controllers
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "Name", courseSignUp.CourseID);
             if (User.IsInRole("Citizen") || User.IsInRole("Hero"))
             {
-                var userCourses = db.CourseSignUps.Where(x => x.Email == User.Identity.Name);
+                var userCourses = db.CourseSignUps.Where(x => x.Email == );
                 return View(courseSignUp);
             }
             else
