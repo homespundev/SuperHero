@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title | Super Hero</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500italic,500,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/Styles/bootstrap.min.css" rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="~/Content/Styles/font-awesome.min.css" />
+    <!-- MaterialCSS -->
+    <link rel="stylesheet" href="~/Content/Styles/material.min.css" />
+    <!-- RipplesCSS -->
+    <link rel="stylesheet" href="~/Content/Styles/ripples.min.css" />
+    <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" /><!--DataTables.net CSS -->
+    <!-- ThemeCSS & Responsive CSS -->
+    <link rel="stylesheet" href="~/Content/Styles/style.css" />
+    <link rel="stylesheet" href="~/Content/Styles/responsive.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <header class="header">
+        <div data-velocity="-.4" id="particles" class="header-bg"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="social-links">
+                        <a class="btn social-link" href="https://www.facebook.com/groups/superheroinc"><i class="fa fa-facebook"></i> <div class="ripple-wrapper"></div></a>
+                        <a class="btn social-link" href="https://twitter.com/SuperHeroINC"><i class="fa fa-twitter"></i> <div class="ripple-wrapper"></div></a>
+                        <a class="btn social-link" href="https://www.instagram.com/SuperHeroINC"><i class="fa fa-instagram"></i> <div class="ripple-wrapper"></div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-title-table">
+            <div class="site-title-tablecell">
+                <div class="slide-text">
+                    <h2><a href="@Url.Content("~/Home/Index")"><span>S</span>uper<span>H</span>ero</a></h2>
+                    <div class="loginNav row col-md-12 " id="loginNav"> @Html.Partial("_LoginPartial")</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="maincontent-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="maincotnent shadow-z-1">
+                        <div class="mainmenu">
+                            <div class="navbar navbar-nobg">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav">
+                                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Hero"))
+                                        {
+                                            <li>@Html.ActionLink("Characters", "Index", "Characters")</li>
+                                        }
+                                        <li>@Html.ActionLink("Courses", "Index", "Course")</li>
+                                        @if(User.IsInRole("Admin")||User.IsInRole("Hero")|| User.IsInRole("Citizen")) { 
+                                        <li>@Html.ActionLink("Sign-Up", "SignUp", "CourseSignUps")</li>}
+                                        <li>@Html.ActionLink("Villians", "Villain", "Characters")</li>
+                                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                        {
+                                            <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+                                            <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
+                                        }
+
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-bottom">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="copyright-text">
+                                    <p>© @DateTime.Now.Year Super Hero, Inc. - All Rights Reserved</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="social-links footer-social-links">
+                                    <a class="btn social-link" href="https://www.facebook.com/groups/superheroinc"><i class="fa fa-facebook"></i> <div class="ripple-wrapper"></div></a>
+                                    <a class="btn social-link" href="https://twitter.com/SuperHeroINC"><i class="fa fa-twitter"></i> <div class="ripple-wrapper"></div></a>
+                                    <a class="btn social-link" href="https://www.instagram.com/SuperHeroINC"><i class="fa fa-instagram"></i> <div class="ripple-wrapper"></div></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Content/Scripts/jquery-1.11.2.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Content/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/Scripts/material.min.js"></script>
+    <script src="~/Content/Scripts/ripples.min.js"></script>
+    <script src="~/Content/Scripts/jquery.scrolly.js"></script>
+    <script src="~/Content/Scripts/jquery.particleground.min.js"></script>
+    <script src="~/Content/Scripts/main.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
+                            <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                            <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@

@@ -187,6 +187,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SuperHeroDeploymentScript09NOV17.sql" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\Material-Design-Icons.svg" />
@@ -201,6 +202,21 @@
     <Content Include="Content\Images\avatar_3.jpg" />
     <Content Include="Content\Images\avatar_4.jpg" />
     <Content Include="Content\Images\bitmap.png" />
+    <Content Include="Content\Images\Characters\1790ff7c-2287-46fe-b3b1-da2198b4d695.png" />
+    <Content Include="Content\Images\Characters\22c5216c-7b7b-44a6-9351-898e354493c9.png" />
+    <Content Include="Content\Images\Characters\283a6148-47d6-4e25-8897-333ce207ae8f.png" />
+    <Content Include="Content\Images\Characters\39e63512-b595-41e9-b975-08becd157a98.png" />
+    <Content Include="Content\Images\Characters\3d9f74ff-25e6-4479-9f77-9ac8b44bded7.png" />
+    <Content Include="Content\Images\Characters\48258ef3-e026-4b1b-83d7-b52c0a85a233.png" />
+    <Content Include="Content\Images\Characters\53e0b464-5b00-4ba3-9e46-8891c87054de.png" />
+    <Content Include="Content\Images\Characters\6da9e7dc-7a40-484f-b490-bba8bba7b26f.png" />
+    <Content Include="Content\Images\Characters\a69192ae-f0eb-4d75-a9d5-ace94d5dc4eb.png" />
+    <Content Include="Content\Images\Characters\c363c02a-f6c7-4b5a-83c0-a7d7f8d76bc7.png" />
+    <Content Include="Content\Images\Characters\dfa790f0-1b89-4670-b9e9-482790b7bc0d.png" />
+    <Content Include="Content\Images\Characters\e3d001fa-bf02-4b1a-8a1d-244748dd0a39.png" />
+    <Content Include="Content\Images\Characters\ef8346f0-a323-4147-9b78-d58d027943d0.png" />
+    <Content Include="Content\Images\Characters\f68984c4-f133-4ec6-ad0e-096a385e70e4.png" />
+    <Content Include="Content\Images\Characters\noimage.png" />
     <Content Include="Content\Images\eva.jpg" />
     <Content Include="Content\Images\main-qimg-5e80b1f3942cb6d9b0e083c8abbbacf2.png" />
     <Content Include="Content\Images\map-marker.png" />
@@ -216,7 +232,6 @@
     <Content Include="Content\Scripts\ripples.min.js" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\bootstrap.min.css" />
-    <Content Include="Content\Images\Characters\noimage.png" />
     <Content Include="Content\Styles\font-awesome.min.css" />
     <Content Include="Content\Styles\material.min.css" />
     <Content Include="Content\Styles\responsive.css" />
@@ -372,9 +387,7 @@
     <Content Include="Views\Characters\Villain.cshtml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Content\Styles\.DS_Store" />
