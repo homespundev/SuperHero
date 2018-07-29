@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SuperHeroDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Characters">
+          <Key>
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Occupation" Type="varchar" MaxLength="50" />
+          <Property Name="IsHero" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CharacterImage" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CourseCharacters">
+          <Key>
+            <PropertyRef Name="CourseCharacterID" />
+          </Key>
+          <Property Name="CourseCharacterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="CharacterID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CourseSignUps">
+          <Key>
+            <PropertyRef Name="CourseSignUpID" />
+          </Key>
+          <Property Name="CourseSignUpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="char" MaxLength="10" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CourseCharacters_Characters">
+          <End Role="Characters" Type="Self.Characters" Multiplicity="1" />
+          <End Role="CourseCharacters" Type="Self.CourseCharacters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Characters">
+              <PropertyRef Name="CharacterID" />
+            </Principal>
+            <Dependent Role="CourseCharacters">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseCharacters_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="CourseCharacters" Type="Self.CourseCharacters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseCharacters">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseSignUps_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="CourseSignUps" Type="Self.CourseSignUps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseSignUps">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SuperHeroDbModelStoreContainer">
+          <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseCharacters" EntityType="Self.CourseCharacters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseSignUps" EntityType="Self.CourseSignUps" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CourseCharacters_Characters" Association="Self.FK_CourseCharacters_Characters">
+            <End Role="Characters" EntitySet="Characters" />
+            <End Role="CourseCharacters" EntitySet="CourseCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseCharacters_Courses" Association="Self.FK_CourseCharacters_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseCharacters" EntitySet="CourseCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseSignUps_Courses" Association="Self.FK_CourseSignUps_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseSignUps" EntitySet="CourseSignUps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SuperHeroDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHero" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CourseCharacters" Relationship="Self.FK_CourseCharacters_Characters" FromRole="Characters" ToRole="CourseCharacters" />
+          <Property Name="CharacterImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CourseCharacter">
+          <Key>
+            <PropertyRef Name="CourseCharacterID" />
+          </Key>
+          <Property Name="CourseCharacterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Character" Relationship="Self.FK_CourseCharacters_Characters" FromRole="CourseCharacters" ToRole="Characters" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_CourseCharacters_Courses" FromRole="CourseCharacters" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CourseCharacters" Relationship="Self.FK_CourseCharacters_Courses" FromRole="Courses" ToRole="CourseCharacters" />
+          <NavigationProperty Name="CourseSignUps" Relationship="SuperHeroDbModel.FK_CourseSignUps_Courses" FromRole="Course" ToRole="CourseSignUp" />
+        </EntityType>
+        <Association Name="FK_CourseCharacters_Characters">
+          <End Role="Characters" Type="Self.Character" Multiplicity="1" />
+          <End Role="CourseCharacters" Type="Self.CourseCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Characters">
+              <PropertyRef Name="CharacterID" />
+            </Principal>
+            <Dependent Role="CourseCharacters">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseCharacters_Courses">
+          <End Role="Courses" Type="SuperHeroDbModel.Course" Multiplicity="1" />
+          <End Role="CourseCharacters" Type="Self.CourseCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseCharacters">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SuperHeroDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Characters" EntityType="Self.Character" />
+          <EntitySet Name="CourseCharacters" EntityType="Self.CourseCharacter" />
+          <EntitySet Name="Courses" EntityType="SuperHeroDbModel.Course" />
+          <AssociationSet Name="FK_CourseCharacters_Characters" Association="Self.FK_CourseCharacters_Characters">
+            <End Role="Characters" EntitySet="Characters" />
+            <End Role="CourseCharacters" EntitySet="CourseCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseCharacters_Courses" Association="Self.FK_CourseCharacters_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseCharacters" EntitySet="CourseCharacters" />
+          </AssociationSet>
+          <EntitySet Name="CourseSignUps" EntityType="SuperHeroDbModel.CourseSignUp" />
+          <AssociationSet Name="FK_CourseSignUps_Courses" Association="SuperHeroDbModel.FK_CourseSignUps_Courses">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseSignUp" EntitySet="CourseSignUps" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CourseSignUp">
+          <Key>
+            <PropertyRef Name="CourseSignUpID" />
+          </Key>
+          <Property Name="CourseSignUpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="SuperHeroDbModel.FK_CourseSignUps_Courses" FromRole="CourseSignUp" ToRole="Course" />
+        </EntityType>
+        <Association Name="FK_CourseSignUps_Courses">
+          <End Type="SuperHeroDbModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="SuperHeroDbModel.CourseSignUp" Role="CourseSignUp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseSignUp">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SuperHeroDbModelStoreContainer" CdmEntityContainer="SuperHeroDbEntities">
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="SuperHeroDbModel.Character">
+              <MappingFragment StoreEntitySet="Characters">
+                <ScalarProperty Name="CharacterImage" ColumnName="CharacterImage" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="IsHero" ColumnName="IsHero" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseCharacters">
+            <EntityTypeMapping TypeName="SuperHeroDbModel.CourseCharacter">
+              <MappingFragment StoreEntitySet="CourseCharacters">
+                <ScalarProperty Name="CourseCharacterID" ColumnName="CourseCharacterID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="SuperHeroDbModel.Course">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseSignUps">
+            <EntityTypeMapping TypeName="SuperHeroDbModel.CourseSignUp">
+              <MappingFragment StoreEntitySet="CourseSignUps">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CourseSignUpID" ColumnName="CourseSignUpID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SuperHeroDbModelStoreContainer" CdmEntityContainer="SuperHeroDbEntities">
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="SuperHeroDbModel.Character">
+        <MappingFragment StoreEntitySet="Characters">
+          <ScalarProperty Name="CharacterImage" ColumnName="CharacterImage" />
+          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="IsHero" ColumnName="IsHero" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseCharacters">
+      <EntityTypeMapping TypeName="SuperHeroDbModel.CourseCharacter">
+        <MappingFragment StoreEntitySet="CourseCharacters">
+          <ScalarProperty Name="CourseCharacterID" ColumnName="CourseCharacterID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="SuperHeroDbModel.Course">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseSignUps">
+      <EntityTypeMapping TypeName="SuperHeroDbModel.CourseSignUp">
+        <MappingFragment StoreEntitySet="CourseSignUps">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="CourseSignUpID" ColumnName="CourseSignUpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
