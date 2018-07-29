@@ -1,1 +1,2 @@
 SuperHero.UI/Web.config
+SuperHero.UI/App_Start/Startup.Auth.cs
