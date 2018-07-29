@@ -8,3 +8,11 @@ C:\Users\Student\documents\visual studio 2015\Projects\SuperHero\SuperHero.DATA\
 C:\Users\Student\documents\visual studio 2015\Projects\SuperHero\SuperHero.DATA\obj\Release\SuperHero.DATA.csprojResolveAssemblyReference.cache
 C:\Users\Student\documents\visual studio 2015\Projects\SuperHero\SuperHero.DATA\obj\Release\SuperHero.DATA.dll
 C:\Users\Student\documents\visual studio 2015\Projects\SuperHero\SuperHero.DATA\obj\Release\SuperHero.DATA.pdb
+C:\Users\Student\Documents\Visual Studio 2015\Projects\SuperHero\src\SuperHero.DATA\bin\Release\SuperHero.DATA.dll.config
+C:\Users\Student\Documents\Visual Studio 2015\Projects\SuperHero\src\SuperHero.DATA\bin\Release\SuperHero.DATA.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\SuperHero\src\SuperHero.DATA\bin\Release\SuperHero.DATA.pdb
+C:\Users\Student\Documents\Visual Studio 2015\Projects\SuperHero\src\SuperHero.DATA\bin\Release\EntityFramework.xml
+C:\Users\Student\Documents\Visual Studio 2015\Projects\SuperHero\src\SuperHero.DATA\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Student\Documents\Visual Studio 2015\Projects\SuperHero\src\SuperHero.DATA\obj\Release\SuperHero.DATA.csprojResolveAssemblyReference.cache
+C:\Users\Student\Documents\Visual Studio 2015\Projects\SuperHero\src\SuperHero.DATA\obj\Release\SuperHero.DATA.dll
+C:\Users\Student\Documents\Visual Studio 2015\Projects\SuperHero\src\SuperHero.DATA\obj\Release\SuperHero.DATA.pdb

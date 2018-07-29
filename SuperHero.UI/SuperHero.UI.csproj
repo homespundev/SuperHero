@@ -387,18 +387,17 @@
     <Content Include="Views\Characters\Villain.cshtml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SuperHero.DATA\SuperHero.DATA.csproj">
+      <Project>{34a454a1-5d0f-4b9c-b390-c2fc9f95d871}</Project>
+      <Name>SuperHero.DATA</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Content\Styles\.DS_Store" />
     <None Include="Project_Readme.html" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\SuperHero.DATA\SuperHero.DATA.csproj">
-      <Project>{34a454a1-5d0f-4b9c-b390-c2fc9f95d871}</Project>
-      <Name>SuperHero.DATA</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
